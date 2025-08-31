@@ -53,7 +53,7 @@ const Hero = () => {
               onClick={() => document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' })}
               variant="outline" 
               size="lg"
-              className="border-brand-light text-brand-light hover:bg-brand-light hover:text-brand-dark px-8 py-4 text-lg"
+              className="border-brand-light text-brand-light hover:bg-brand-light hover:text-brand-dark px-8 py-4 text-lg bg-white/10 backdrop-blur-sm"
             >
               Nossos Serviços
             </Button>
