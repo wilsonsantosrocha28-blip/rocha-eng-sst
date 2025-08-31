@@ -42,6 +42,21 @@ const Services = () => {
       icon: <Users className="w-8 h-8" />,
       title: "Treinamentos de Normas de Segurança",
       description: "Capacitação profissional em normas de segurança e prevenção de acidentes."
+    },
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: "Elaboração de Análise Preliminar de Risco - APR",
+      description: "Análise detalhada de riscos potenciais antes da execução de atividades."
+    },
+    {
+      icon: <FileText className="w-8 h-8" />,
+      title: "Plano de Emergência",
+      description: "Desenvolvimento de planos estruturados para situações de emergência no trabalho."
+    },
+    {
+      icon: <CheckCircle className="w-8 h-8" />,
+      title: "Permissão de Trabalho de Risco",
+      description: "Documentação e controle para execução segura de atividades de alto risco."
     }
   ];
 

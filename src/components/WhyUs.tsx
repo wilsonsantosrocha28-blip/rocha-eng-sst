@@ -11,7 +11,7 @@ const WhyUs = () => {
     {
       icon: <DollarSign className="w-12 h-12" />,
       title: "Custos Acessíveis",
-      description: "Preços justos e competitivos, sem mensalidades abusivas que comprometem seu orçamento."
+      description: "Preços justos e competitivos — sem mensalidades! Aqui, você paga apenas pelo que realmente precisa. Nada de cobranças mensais ou taxas escondidas que pesam no seu bolso. Transparência e economia para você investir no que importa."
     },
     {
       icon: <Eye className="w-12 h-12" />,

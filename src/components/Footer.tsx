@@ -37,9 +37,9 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-brand-gold mb-4">Contato</h4>
             <div className="space-y-2 text-brand-light/80">
-              <p>📧 contato@rochaengenharia.com.br</p>
-              <p>📱 (11) 99999-9999</p>
-              <p>📍 São Paulo, SP</p>
+              <p>📧 rochaengsst@gmail.com</p>
+              <p>📱 (98) 981825934</p>
+              <p>📍 São Luís, MA</p>
               <p>🕒 Segunda a Sexta: 8h às 18h</p>
             </div>
           </div>

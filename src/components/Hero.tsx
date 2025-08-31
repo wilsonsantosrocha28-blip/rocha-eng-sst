@@ -50,6 +50,7 @@ const Hero = () => {
               Solicitar Orçamento
             </Button>
             <Button 
+              onClick={() => document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' })}
               variant="outline" 
               size="lg"
               className="border-brand-light text-brand-light hover:bg-brand-light hover:text-brand-dark px-8 py-4 text-lg"
