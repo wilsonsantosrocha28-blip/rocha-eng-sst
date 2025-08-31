@@ -10,11 +10,13 @@ const Header = () => {
     <header className="bg-background border-b border-border sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <img 
-            src="/lovable-uploads/6737829a-cb2a-4dba-b913-8f5d08d5b8a9.png" 
-            alt="Rocha Engenharia - Consultoria e SST"
-            className="h-12 w-auto"
-          />
+          <div className="w-10 h-10 bg-gradient-to-r from-brand-gold to-yellow-400 rounded-md flex items-center justify-center">
+            <span className="text-brand-dark font-bold text-lg">R</span>
+          </div>
+          <div>
+            <h1 className="text-xl font-bold text-brand-dark">ROCHA ENGENHARIA</h1>
+            <p className="text-xs text-brand-gray">CONSULTORIA E SST</p>
+          </div>
         </div>
         
         <nav className="hidden md:flex items-center space-x-6">
