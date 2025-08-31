@@ -118,6 +118,9 @@ const Contact = () => {
                     <option>e-Social SST</option>
                     <option>Projetos Elétricos</option>
                     <option>Treinamentos</option>
+                    <option>Elaboração de Análise Preliminar de Risco - APR</option>
+                    <option>Plano de Emergência</option>
+                    <option>Permissão de Trabalho de Risco</option>
                     <option>Consulta Completa</option>
                   </select>
                 </div>
