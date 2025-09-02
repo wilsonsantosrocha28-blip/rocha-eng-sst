@@ -1,12 +1,18 @@
 import React from 'react';
 
-const WhatsAppButton = () => {
-  const whatsappNumber = "5598981825934";
-  const message = "Olá! Gostaria de saber mais sobre os serviços da ROCHA ENGENHARIA.";
-  
+const formatWhatsAppNumber = (number) => {
+  // Remove qualquer caractere não numérico
+  return number.replace(/\D/g, '');
+};
+
+const WhatsAppButton = ({
+  number = "5598981825934",
+  message = "Olá! Gostaria de saber mais sobre os serviços da ROCHA ENGENHARIA."
+}) => {
   const handleWhatsAppClick = () => {
+    const formattedNumber = formatWhatsAppNumber(number);
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
   };
 
