@@ -69,12 +69,39 @@ const Contact = () => {
             <Card className="p-8">
               <h3 className="text-2xl font-semibold text-brand-dark mb-6">Solicite um Orçamento</h3>
               
-              <form className="space-y-4">
+              <form 
+                className="space-y-4"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const formData = new FormData(e.currentTarget);
+                  const nome = formData.get('nome');
+                  const empresa = formData.get('empresa');
+                  const email = formData.get('email');
+                  const telefone = formData.get('telefone');
+                  const servico = formData.get('servico');
+                  const mensagem = formData.get('mensagem');
+                  
+                  const subject = `Solicitação de Orçamento - ${servico}`;
+                  const body = `Nome: ${nome}
+Empresa: ${empresa}
+E-mail: ${email}
+Telefone: ${telefone}
+Serviço de Interesse: ${servico}
+
+Mensagem:
+${mensagem}`;
+                  
+                  const mailtoLink = `mailto:rochaengsst@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                  window.location.href = mailtoLink;
+                }}
+              >
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-brand-dark font-medium mb-2">Nome</label>
                     <input 
                       type="text" 
+                      name="nome"
+                      required
                       className="w-full p-3 border border-border rounded-md focus:ring-2 focus:ring-brand-gold focus:border-transparent"
                       placeholder="Seu nome"
                     />
@@ -83,6 +110,7 @@ const Contact = () => {
                     <label className="block text-brand-dark font-medium mb-2">Empresa</label>
                     <input 
                       type="text" 
+                      name="empresa"
                       className="w-full p-3 border border-border rounded-md focus:ring-2 focus:ring-brand-gold focus:border-transparent"
                       placeholder="Nome da empresa"
                     />
@@ -94,6 +122,8 @@ const Contact = () => {
                     <label className="block text-brand-dark font-medium mb-2">E-mail</label>
                     <input 
                       type="email" 
+                      name="email"
+                      required
                       className="w-full p-3 border border-border rounded-md focus:ring-2 focus:ring-brand-gold focus:border-transparent"
                       placeholder="seu@email.com"
                     />
@@ -102,6 +132,7 @@ const Contact = () => {
                     <label className="block text-brand-dark font-medium mb-2">Telefone</label>
                     <input 
                       type="tel" 
+                      name="telefone"
                       className="w-full p-3 border border-border rounded-md focus:ring-2 focus:ring-brand-gold focus:border-transparent"
                       placeholder="(11) 99999-9999"
                     />
@@ -110,18 +141,22 @@ const Contact = () => {
 
                 <div>
                   <label className="block text-brand-dark font-medium mb-2">Serviço de Interesse</label>
-                  <select className="w-full p-3 border border-border rounded-md focus:ring-2 focus:ring-brand-gold focus:border-transparent">
-                    <option>Selecione um serviço</option>
-                    <option>PCMSO</option>
-                    <option>PGR</option>
-                    <option>LTCAT</option>
-                    <option>e-Social SST</option>
-                    <option>Projetos Elétricos</option>
-                    <option>Treinamentos</option>
-                    <option>Elaboração de Análise Preliminar de Risco - APR</option>
-                    <option>Plano de Emergência</option>
-                    <option>Permissão de Trabalho de Risco</option>
-                    <option>Consulta Completa</option>
+                  <select 
+                    name="servico"
+                    required
+                    className="w-full p-3 border border-border rounded-md focus:ring-2 focus:ring-brand-gold focus:border-transparent"
+                  >
+                    <option value="">Selecione um serviço</option>
+                    <option value="PCMSO">PCMSO</option>
+                    <option value="PGR">PGR</option>
+                    <option value="LTCAT">LTCAT</option>
+                    <option value="e-Social SST">e-Social SST</option>
+                    <option value="Projetos Elétricos">Projetos Elétricos</option>
+                    <option value="Treinamentos">Treinamentos</option>
+                    <option value="Elaboração de Análise Preliminar de Risco - APR">Elaboração de Análise Preliminar de Risco - APR</option>
+                    <option value="Plano de Emergência">Plano de Emergência</option>
+                    <option value="Permissão de Trabalho de Risco">Permissão de Trabalho de Risco</option>
+                    <option value="Consulta Completa">Consulta Completa</option>
                   </select>
                 </div>
 
@@ -129,6 +164,7 @@ const Contact = () => {
                   <label className="block text-brand-dark font-medium mb-2">Mensagem</label>
                   <textarea 
                     rows={4}
+                    name="mensagem"
                     className="w-full p-3 border border-border rounded-md focus:ring-2 focus:ring-brand-gold focus:border-transparent"
                     placeholder="Conte-nos mais sobre suas necessidades..."
                   ></textarea>
