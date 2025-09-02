@@ -12,8 +12,25 @@ const WhatsAppButton = ({
   const handleWhatsAppClick = () => {
     const formattedNumber = formatWhatsAppNumber(number);
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank');
+    
+    // Detectar se é mobile
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      // Para mobile, tenta primeiro o protocolo nativo
+      const whatsappProtocol = `whatsapp://send?phone=${formattedNumber}&text=${encodedMessage}`;
+      window.location.href = whatsappProtocol;
+      
+      // Fallback para wa.me após um pequeno delay
+      setTimeout(() => {
+        const waUrl = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
+        window.open(waUrl, '_blank');
+      }, 1000);
+    } else {
+      // Para desktop, usa diretamente wa.me
+      const waUrl = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
+      window.open(waUrl, '_blank');
+    }
   };
 
   return (
