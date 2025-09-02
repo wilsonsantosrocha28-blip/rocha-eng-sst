@@ -1,8 +1,63 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import emailjs from '@emailjs/browser';
+import { toast } from "sonner";
+import { useState } from "react";
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    const templateParams = {
+      to_name: "ROCHA ENGENHARIA",
+      from_name: formData.get('nome'),
+      from_empresa: formData.get('empresa'),
+      from_email: formData.get('email'),
+      from_telefone: formData.get('telefone'),
+      servico_interesse: formData.get('servico'),
+      message: formData.get('mensagem'),
+      to_email: "rochaengsst@gmail.com"
+    };
+
+    try {
+      // Você precisa configurar seu EmailJS com suas próprias credenciais
+      // Acesse https://www.emailjs.com/ para configurar
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Substitua pelo seu Service ID do EmailJS
+        'YOUR_TEMPLATE_ID', // Substitua pelo seu Template ID do EmailJS
+        templateParams,
+        'YOUR_PUBLIC_KEY' // Substitua pela sua Public Key do EmailJS
+      );
+      
+      toast.success("Solicitação enviada com sucesso! Entraremos em contato em breve.");
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      console.error('Erro ao enviar email:', error);
+      // Fallback para mailto se o EmailJS falhar
+      const subject = `Solicitação de Orçamento - ${formData.get('servico')}`;
+      const body = `Nome: ${formData.get('nome')}
+Empresa: ${formData.get('empresa')}
+E-mail: ${formData.get('email')}
+Telefone: ${formData.get('telefone')}
+Serviço de Interesse: ${formData.get('servico')}
+
+Mensagem:
+${formData.get('mensagem')}`;
+      
+      const mailtoLink = `mailto:rochaengsst@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
+      
+      toast.info("Redirecionando para seu cliente de email...");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contato" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -69,32 +124,7 @@ const Contact = () => {
             <Card className="p-8">
               <h3 className="text-2xl font-semibold text-brand-dark mb-6">Solicite um Orçamento</h3>
               
-              <form 
-                className="space-y-4"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const formData = new FormData(e.currentTarget);
-                  const nome = formData.get('nome');
-                  const empresa = formData.get('empresa');
-                  const email = formData.get('email');
-                  const telefone = formData.get('telefone');
-                  const servico = formData.get('servico');
-                  const mensagem = formData.get('mensagem');
-                  
-                  const subject = `Solicitação de Orçamento - ${servico}`;
-                  const body = `Nome: ${nome}
-Empresa: ${empresa}
-E-mail: ${email}
-Telefone: ${telefone}
-Serviço de Interesse: ${servico}
-
-Mensagem:
-${mensagem}`;
-                  
-                  const mailtoLink = `mailto:rochaengsst@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                  window.location.href = mailtoLink;
-                }}
-              >
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-brand-dark font-medium mb-2">Nome</label>
@@ -172,9 +202,10 @@ ${mensagem}`;
 
                 <Button 
                   type="submit" 
-                  className="w-full bg-brand-gold hover:bg-yellow-500 text-brand-dark font-semibold py-3 text-lg"
+                  disabled={isSubmitting}
+                  className="w-full bg-brand-gold hover:bg-yellow-500 text-brand-dark font-semibold py-3 text-lg disabled:opacity-50"
                 >
-                  Enviar Solicitação
+                  {isSubmitting ? "Enviando..." : "Enviar Solicitação"}
                 </Button>
               </form>
             </Card>
