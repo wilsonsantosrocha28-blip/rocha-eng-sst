@@ -6,8 +6,12 @@ const Footer = () => {
           {/* Logo and description */}
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-brand-gold to-yellow-400 rounded-md flex items-center justify-center">
-                <span className="text-brand-dark font-bold text-lg">R</span>
+              <div className="w-10 h-10 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/a4855879-46c8-489a-ac29-64bc54b8610d.png" 
+                  alt="Rocha Engenharia Logo" 
+                  className="w-10 h-10 object-contain"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-bold">ROCHA ENGENHARIA</h3>

@@ -17,11 +17,13 @@ const Contact = () => {
       to_name: "ROCHA ENGENHARIA",
       from_name: formData.get('nome'),
       from_empresa: formData.get('empresa'),
-      from_email: formData.get('email'),
+      from_email: "wilsonsantosrocha28@gmail.com",
+      reply_to: formData.get('email'),
       from_telefone: formData.get('telefone'),
       servico_interesse: formData.get('servico'),
       message: formData.get('mensagem'),
-      to_email: "rochaengsst@gmail.com"
+      to_email: "rochaengsst@gmail.com",
+      user_email: formData.get('email')
     };
 
     try {
@@ -49,7 +51,7 @@ Serviço de Interesse: ${formData.get('servico')}
 Mensagem:
 ${formData.get('mensagem')}`;
       
-      const mailtoLink = `mailto:rochaengsst@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoLink = `mailto:rochaengsst@gmail.com?from=wilsonsantosrocha28@gmail.com&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoLink;
       
       toast.info("Redirecionando para seu cliente de email...");
