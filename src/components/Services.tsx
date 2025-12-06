@@ -57,6 +57,11 @@ const Services = () => {
       icon: <CheckCircle className="w-8 h-8" />,
       title: "Permissão de Trabalho de Risco",
       description: "Documentação e controle para execução segura de atividades de alto risco."
+    },
+    {
+      icon: <CheckCircle className="w-8 h-8" />,
+      title: "Consultoria Completa",
+      description: "Acompanhamos de perto o processo da sua empresa com um técnico de segurança presencial"
     }
   ];
 
