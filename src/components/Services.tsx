@@ -61,7 +61,7 @@ const Services = () => {
     {
       icon: <CheckCircle className="w-8 h-8" />,
       title: "Consultoria Completa",
-      description: "Acompanhamos de perto o processo da sua empresa com um técnico de segurança presencial"
+      description: "Acompanhamos de perto o processo da sua empresa com um técnico de segurança presencial."
     }
   ];
 
