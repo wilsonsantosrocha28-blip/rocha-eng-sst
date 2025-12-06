@@ -188,7 +188,7 @@ ${formData.get('mensagem')}`;
                     <option value="Elaboração de Análise Preliminar de Risco - APR">Elaboração de Análise Preliminar de Risco - APR</option>
                     <option value="Plano de Emergência">Plano de Emergência</option>
                     <option value="Permissão de Trabalho de Risco">Permissão de Trabalho de Risco</option>
-                    <option value="Consulta Completa">Consulta Completa</option>
+                    <option value="Consulta Completa">Consultoria Completa</option>
                   </select>
                 </div>
 
