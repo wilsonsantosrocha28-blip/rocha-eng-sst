@@ -7,7 +7,7 @@ const formatWhatsAppNumber = (number) => {
 
 const WhatsAppButton = ({
   number = "5598981825934",
-  message = "Olá! Gostaria de saber mais sobre os serviços da ROCHA ENGENHARIA."
+  message = "Olá! Gostaria de saber mais sobre os serviços da Rocha Engenharia."
 }) => {
   const handleWhatsAppClick = () => {
     const formattedNumber = formatWhatsAppNumber(number);
