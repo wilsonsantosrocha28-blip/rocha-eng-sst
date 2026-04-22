@@ -1,6 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { LogIn, LayoutDashboard } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 const Header = () => {
+  const { user } = useAuth();
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -49,6 +54,15 @@ const Header = () => {
           >
             Contato
           </Button>
+          {user ? (
+            <Button asChild variant="outline" className="border-brand-dark text-brand-dark">
+              <Link to="/painel"><LayoutDashboard className="h-4 w-4 mr-2" />Painel</Link>
+            </Button>
+          ) : (
+            <Button asChild variant="outline" className="border-brand-dark text-brand-dark">
+              <Link to="/auth"><LogIn className="h-4 w-4 mr-2" />Login</Link>
+            </Button>
+          )}
         </nav>
       </div>
     </header>
